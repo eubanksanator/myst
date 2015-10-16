@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Favoritings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Photo</th>
+      <th>Favorited by</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @favoritings.each do |favoriting| %>
+      <tr>
+        <td><%= favoriting.photo_id %></td>
+        <td><%= favoriting.favorited_by_id %></td>
+        <td><%= link_to 'Show', favoriting %></td>
+        <td><%= link_to 'Edit', edit_favoriting_path(favoriting) %></td>
+        <td><%= link_to 'Destroy', favoriting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Favoriting', new_favoriting_path %>
