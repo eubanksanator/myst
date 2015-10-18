@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'users#index'
+
   resources :photos
   resources :followings
   resources :favoritings
