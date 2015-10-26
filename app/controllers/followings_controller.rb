@@ -24,17 +24,21 @@ class FollowingsController < ApplicationController
   # POST /followings
   # POST /followings.json
   def create
-    @following = Following.new(following_params)
 
-    respond_to do |format|
-      if @following.save
-        format.html { redirect_to @following, notice: 'Following was successfully created.' }
-        format.json { render :show, status: :created, location: @following }
-      else
-        format.html { render :new }
-        format.json { render json: @following.errors, status: :unprocessable_entity }
-      end
-    end
+    @following = Following.new(leader_id: params[:leader_id], follower_id: params[:follower_id])
+    @following.save
+    redirect_to root_path
+    # @following = Following.new(following_params)
+
+    # respond_to do |format|
+    #   if @following.save
+    #     format.html { redirect_to @following, notice: 'Following was successfully created.' }
+    #     format.json { render :show, status: :created, location: @following }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @following.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /followings/1

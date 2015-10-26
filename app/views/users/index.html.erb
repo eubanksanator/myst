@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Users</h1>
+  <p><%= button_to 'Add friend', followings_path, params: {leader_id: User.first.id, follower_id: User.last.id} %></p>
+  <p><%= User.first.followers.count %></p>
 
 <table>
   <thead>
