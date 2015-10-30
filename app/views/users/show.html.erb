@@ -1,14 +1,28 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
-  <strong>Name:</strong>
-  <%= @user.name %>
+ <strong>Name:</strong>
+ <%= @user.name %>
 </p>
 
 <p>
-  <strong>Username:</strong>
-  <%= @user.username %>
+ <strong>Username:</strong>
+ <%= @user.username %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<!-- replace with current_user logged in -->
+<p><%= button_to 'Add friend', followings_path(
+                              leader_id: @user.id,
+                              follower_id: @a_user.id) %></p>
+
+<p><%= @user.name %> has <%= @user.followers.count %> followers</p>
+
+<ul>
+  <% @user.followers.each do |follower| %>
+  <li><%= follower.name %></li>
+  <% end %>
+</ul>

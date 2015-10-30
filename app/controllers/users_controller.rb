@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @users = User.all
+    @a_user = @users.sample
   end
 
   # GET /users/new
